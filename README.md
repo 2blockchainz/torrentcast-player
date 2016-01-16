@@ -3,20 +3,20 @@ A chromecast torrent streamer with API controls.
 
 ## Install
 
-```
+```js
 npm install torrentcast-player
 ```
 
 ## Casting a Torrent via a magnet
 
-```
+```js
 const player = require('torrentcast-player');
 player(TORRENT_MAGNET);
 ```
 
 ## Controlling a Torrent via torrentcast-player API
 
-```
+```js
 const player = require('torrentcast-player')
 
 const wait = function(ms, callback) {
