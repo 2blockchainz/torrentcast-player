@@ -3,7 +3,7 @@ A chromecast torrent streamer with API controls.
 
 ## Install
 
-```js
+```
 npm install torrentcast-player
 ```
 
