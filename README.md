@@ -1,6 +1,15 @@
 # torrentcast-player
 A chromecast torrent streamer with API controls.
 
+## Dependencies
+Node 5
+
+#### Installing Node 5 with NVM
+```
+nvm install 5
+nvm use 5
+```
+
 ## Install
 
 ```
