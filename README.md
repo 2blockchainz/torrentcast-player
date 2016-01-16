@@ -17,7 +17,7 @@ player(TORRENT_MAGNET);
 ## Controlling a Torrent via torrentcast-player API
 
 ```js
-const player = require('torrentcast-player')
+const player = require('torrentcast-player');
 
 const wait = function(ms, callback) {
   setTimeout(callback, ms);
