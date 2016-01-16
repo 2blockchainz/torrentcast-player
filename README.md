@@ -1,15 +1,6 @@
 # torrentcast-player
 A chromecast torrent streamer with API controls.
 
-## Dependencies
-Node 5
-
-#### Installing Node 5 with NVM
-```
-nvm install 5
-nvm use 5
-```
-
 ## Install
 
 ```
@@ -74,3 +65,18 @@ player(TORRENT_MAGNET).on('status', (status, ctrl) => {
   }
 });
 ```
+
+## Dependencies
+Node 5
+
+#### Installing Node 5 with NVM
+```
+nvm install 5
+nvm use 5
+```
+
+## Coming Soon
+* [ ] a web interface for basic torrent+chromecast controls
+* [ ] tests
+* [ ] multiple chromecast selection
+* [ ] attaching to an chromecast player instance
