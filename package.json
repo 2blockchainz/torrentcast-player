@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git@github.com:2blockchainz/torrentcast-player.git"
   },
+  "engines": {
+    "node": "^5.0.0"
+  },
   "keywords": [
     "chromecast",
     "media",
