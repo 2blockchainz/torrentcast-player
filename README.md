@@ -77,6 +77,7 @@ nvm use 5
 
 ## Coming Soon
 * [ ] a web interface for basic torrent+chromecast controls
+* [ ] [Promises](https://youtu.be/WBupia9oidU)
 * [ ] a simpler way to access the controller, rather than waiting for the status to equal `'playing'`
 * [ ] tests
 * [ ] multiple chromecast selection
