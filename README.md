@@ -18,6 +18,7 @@ player(TORRENT_MAGNET);
 
 ```js
 const player = require('torrentcast-player');
+const TORRENT_MAGNET = '>>>> magent goes here <<<<';
 
 const wait = function(ms, callback) {
   setTimeout(callback, ms);
