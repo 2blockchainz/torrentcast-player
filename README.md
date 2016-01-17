@@ -70,7 +70,7 @@ player(TORRENT_MAGNET).on('status', (status, ctrl) => {
 ## Dependencies
 Node 5
 
-#### Installing Node 5 with NVM
+#### Installing Node 5 with [NVM](https://github.com/creationix/nvm)
 ```
 nvm install 5
 nvm use 5
