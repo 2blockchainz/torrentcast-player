@@ -1,4 +1,5 @@
 const torrentcast = require('./index');
+const MAGNET = '>>> magnet goes here <<<';
 
 const wait = function(ms, callback) {
   setTimeout(callback, ms);
@@ -7,11 +8,6 @@ const wait = function(ms, callback) {
 const seconds = (ms) => {
   return ms * 1000;
 };
-
-// Return of the king
-const MAGNET = 'magnet:?xt=urn:btih:fdf8d3eb9cd78de60c3cbb3b68af6c8a7d560e67&dn=The+Lord+of+the+Rings%3A+The+Return+of+the+King+EXTENDED+%282003%29+72&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969';
-
-// const MAGNET = 'magnet:?xt=urn:btih:d150376fc88be8f1c5b1f8dfb543793b521e66bb&dn=South.Park.S10E04.720p.WEBRip.H264-DEADPOOL%5Brartv%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969';
 
 var startedPlaying = false;
 
