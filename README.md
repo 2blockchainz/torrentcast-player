@@ -17,53 +17,39 @@ player(TORRENT_MAGNET);
 ## Controlling a Torrent via torrentcast-player API
 
 ```js
-const player = require('torrentcast-player');
-const TORRENT_MAGNET = '>>>> magent goes here <<<<';
+const torrentcast = require('torrentcast-player');
+const MAGNET = '>>>> magent goes here <<<<';
 
-const wait = function(ms, callback) {
-  setTimeout(callback, ms);
-};
-
-const seconds = (ms) => {
-  return ms * 1000;
-};
-
-player(TORRENT_MAGNET).on('status', (status, ctrl) => {
-  console.log({status});
-
-  if (status === 'playing' && !startedPlaying) {
-    startedPlaying = true;
-
-    wait(seconds(5), () => {
-      ctrl.pause(() => {
-        console.log('paused...');
-      });
-    });
-
-    wait(seconds(10), () => {
-      ctrl.resume(() => {
-        console.log('unpaused...');
-      });
-    });
-
-    wait(seconds(15), () => {
-      ctrl.mute(() => {
-        console.log('muted...');
-      });
-    });
-
-    wait(seconds(20), () => {
-      ctrl.unmute(() => {
-        console.log('unmuted...');
-      });
-    });
-
-    wait(seconds(25), () => {
-      ctrl.stop(() => {
-        console.log('stopped...');
-      });
-    });
-  }
+torrentcast(MAGNET).then((ctrl) => {
+  
+  ctrl.pause().then(() => {
+    // paused
+  });
+  
+  ctrl.resume().then(() => {
+    // resumed
+  });
+  
+  ctrl.mute(() => {
+    // muted
+  });
+  
+  ctrl.unmute(() => {
+    // unmuted
+  });
+  
+  ctrl.setVolume(0.5).then(() => {
+    // volume set to 50%
+  });
+  
+  ctrl.seekTo(time); // seeks to the given time.
+  
+  ctrl.getPosition(); // gets the position of the movie in milliseconds.
+  ctrl.getProgress(); // gets the progress of the movie as a percentage.
+  
+  ctrl.stop(() => {
+    // stopped
+  });
 });
 ```
 
