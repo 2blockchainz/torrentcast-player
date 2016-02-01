@@ -1,82 +1,98 @@
+const Promise = require('bluebird');
 const torrentcast = require('./index');
-const MAGNET = '>>> magnet goes here <<<';
 
-const wait = function(ms, callback) {
-  setTimeout(callback, ms);
-};
+// Return of the king
+const MAGNET = 'magnet:?xt=urn:btih:fdf8d3eb9cd78de60c3cbb3b68af6c8a7d560e67&dn=The+Lord+of+the+Rings%3A+The+Return+of+the+King+EXTENDED+%282003%29+72&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969';
 
-const seconds = (ms) => {
-  return ms * 1000;
-};
+function wait(seconds) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, seconds * 1000);
+  });
+}
 
-var startedPlaying = false;
+torrentcast(MAGNET).then((ctrl) => {
 
-torrentcast(MAGNET).on('status', (status, ctrl) => {
-  console.log({status});
+  wait(5)
+  // Pause
+  .then(() => {
+    return ctrl.pause();
+  })
+  .then(() => {
+    return wait(5);
+  })
 
-  if (status === 'playing' && !startedPlaying) {
-    startedPlaying = true;
+  // Resume
+  .then(() => {
+    return ctrl.resume();
+  })
+  .then(() => {
+    return wait(5);
+  })
 
-    wait(seconds(5), () => {
-      ctrl.pause(() => {
-        console.log('paused...');
-      });
+  // Get Position, Progress
+  .then(() => {
+    console.log({
+      position: ctrl.getPosition(),
+      progress: ctrl.getProgress()
     });
 
-    wait(seconds(10), () => {
-      ctrl.resume(() => {
-        console.log('unpaused...');
-      });
-    });
+    return wait(5);
+  })
 
-    wait(seconds(15), () => {
-      ctrl.mute(() => {
-        console.log('muted...');
-      });
-    });
+  // Mute
+  .then(() => {
+    return ctrl.mute();
+  })
+  .then(() => {
+    console.log('muted');
+    return wait(5);
+  })
 
-    wait(seconds(20), () => {
-      ctrl.unmute(() => {
-        console.log('unmuted...');
-      });
-    });
+  // Unmute
+  .then(() => {
+    return ctrl.unmute();
+  })
+  .then(() => {
+    console.log('unmuted');
+    return wait(5);
+  })
 
-    wait(seconds(25), () => {
-      ctrl.stop(() => {
-        console.log('stopped...');
-      });
-    });
-  }
+  // set volume to 50%
+  .then(() => {
+    return ctrl.setVolume(0.5);
+  })
+  .then(() => {
+    return wait(5);
+  })
+
+  // Seek forward 30 sec
+  .then(() => {
+    return ctrl.seekForward(30 * 1000);
+  })
+  .then(() => {
+    return wait(5);
+  })
+
+  // Seek backward 30 sec
+  .then(() => {
+    return ctrl.seekBackward(30 * 1000);
+  })
+  .then(() => {
+    return wait(5);
+  })
+
+  // seek to beginning
+  .then(() => {
+    return ctrl.seekTo(0);
+  })
+  .then(() => {
+    return wait(5);
+  })
+
+  // STOP
+  .then(() => {
+    return ctrl.stop();
+  });
 });
-
-/*
-
-TODO a test suite
-// Create a Test Suite
-
-const vows = require('vows');
-const assert = require('assert');
-
-vows.describe('playing a torrent video').addBatch({
-    'when dividing a number by zero': {
-        topic: function () { return 42 / 0 },
-
-        'we get Infinity': function (topic) {
-            assert.equal (topic, Infinity);
-        }
-    },
-    'but when dividing zero by zero': {
-        topic: function () { return 0 / 0 },
-
-        'we get a value which': {
-            'is not a number': function (topic) {
-                assert.isNaN (topic);
-            },
-            'is not equal to itself': function (topic) {
-                assert.notEqual (topic, topic);
-            }
-        }
-    }
-}).run(); // Run it
-*/
-
