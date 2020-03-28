@@ -1,5 +1,5 @@
 # torrentcast-player
-A chromecast torrent streamer with API controls.
+A Chromecast torrent streamer with API controls.
 
 ## Install
 
@@ -63,9 +63,9 @@ nvm use 5
 ```
 
 ## Coming Soon
-* [ ] a web interface for basic torrent+chromecast controls
+* [ ] A web interface for basic torrent+Chromecast controls (#1)
 * [x] API will return [Promises Promises](https://youtu.be/WBupia9oidU)
-* [x] a simpler way to access the controller, rather than waiting for the status to equal `'playing'`
-* [ ] tests
-* [ ] multiple chromecast selection
-* [ ] attaching to an chromecast player instance
+* [x] A simpler way to access the controller, rather than waiting for the status to equal `'playing'`
+* [ ] Tests
+* [ ] Multiple Chromecast selection
+* [ ] Attaching to a Chromecast player instance
